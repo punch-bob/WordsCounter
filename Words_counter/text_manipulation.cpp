@@ -47,7 +47,7 @@ bool text_manipulation::WordCMP(std::string first, std::string second)
 void text_manipulation::FillList()
 {
 	std::map <std::string, int>::iterator iter = this -> vocabulary.begin();
-	for (; iter != this->vocabulary.end(); iter++)
+	for (; iter != this->vocabulary.end(); ++iter)
 	{
 		this  -> words_freq.push_back(iter -> first);
 	}
@@ -65,7 +65,7 @@ void text_manipulation::WriteCSV()
 	outcsv.open("output.csv");
 	outcsv << "Words;Count;Frequency" << std::endl;
 	std::list<std::string>::iterator i = this -> words_freq.begin();
-	for (i; i != this->words_freq.end(); i++)
+	for (i; i != this->words_freq.end(); ++i)
 	{
 		outcsv << (*i) << ";" << this->vocabulary[*i] << ";" << float(this->vocabulary[*i]) / float(this->words_counter) * 100 << "%" << std::endl;
 	}
